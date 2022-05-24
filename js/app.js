@@ -45,7 +45,7 @@ class Enemies {
 }
 
 let castle = new Capital(350, 370, "white", 100, 30)
-
+let orc;
 
 
 
@@ -56,35 +56,40 @@ let castle = new Capital(350, 370, "white", 100, 30)
 // const newOrcs = new Enemies(50, 50, "red", 15, 25)
 //    newEnemies.push(newOrcs)
 //    console.log(newEnemies);
+
 const orcs = [];
 let v = 0;
 // Enemies will appear randomly on the canvas selected area. Will then proceed to move towards Capital.
 function newEnemy() {
-    if (v < 1){
-        v++
-        let j = 0 
-        for( i = 0; i < 10; i++) {
+    // if (v < 1){
+    //     v++
+        let i = 0 
+        for(i; i < 20; i++) {
             setTimeout(() => {  
-        let xRandom = Math.floor(Math.random() * game.width);
-        let yRandom = Math.floor(Math.random() * game.height);
-        let orc = new Enemies(xRandom, yRandom, "red", 15, 25)
-        orcs.push(orc);
-        orcs[j].render();
+                let xRandom = Math.floor(Math.random() * game.width);
+                let yRandom = Math.floor(Math.random() * 200);
+                orc = new Enemies(xRandom, yRandom, "red", 10, 25)
+                orcs.push(orc);
+                // orcs[i].render();
         console.log(orcs)
-        j++
+        // j++
         }, i * 5000);
      }
-     setTimeout(() => {
-         j = 0
-     }, 10 * 5000);
+    //  setTimeout(() => {
+    //      j = 0
+    //  }, 10 * 5000);
     }
-}
+// }
+newEnemy();
 
 function enemyMovement() {
-    orcs[0].x += (castle.x - orcs[0].x) * .1;
-    console.log()
-    orcs[0].y += (castle.y - orcs[0].y) * 0.1;
-
+    orcs.forEach((orc) =>{
+    if (orc.x < 400) {
+    orc.x += (castle.x - orc.x) * 0.1;
+     } else { (orc.x += 380 - orc.x) * 0.1 }  
+    orc.y += (castle.y - orc.y) * 0.1;
+        orc.render();
+})
 }
     // orc.render();
 
@@ -92,8 +97,11 @@ function enemyMovement() {
 // renderTest();
 // This is the main game loop that will run once start is clicked.
 function gameLoop() {
-    //ctx.clearRect(0, 0, game.width, game.height)
-    newEnemy();
+    ctx.clearRect(0, 0, game.width, game.height)
+    // orcs.forEach((orc) => {
+    //     orc.render();
+    // })
+    // newEnemy();
     enemyMovement();
     castle.render();
 
