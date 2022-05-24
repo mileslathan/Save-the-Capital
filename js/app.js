@@ -11,7 +11,7 @@ game.setAttribute("height", getComputedStyle(game)["height"]);
 game.setAttribute("width", getComputedStyle(game)["width"]);
 
 
-// Created the class for the Capital to represent the Capital on screen.
+// Created the class for the Capital to represent the static Capital on screen.
 class Capital {
     constructor(x, y, color, width, height) {
         this.x = x;
@@ -27,7 +27,7 @@ class Capital {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
-
+// // Created the class for the orcs to represent the Enemies on screen.
 class Enemies {
     constructor(x, y, color, width, height) {
         this.x = x;
@@ -43,15 +43,43 @@ class Enemies {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
-
+// Actually renders the Capital and Orcs on screen.
 function renderTest(randomCordinateX, randomCordinateY) {
     castle = new Capital(350, 370, "white", 100, 30)
     orcs = new Enemies(50, 50, "red", 15, 25)
 }
 
+
+
+// Enemies will appear randomly on the canvas selected area. Will then proceed to move towards Capital.
+function enemyMovement() {
+    orcs.x += (castle.x - orcs.x) * 0.1
+    orcs.y += (castle.y - orcs.y) * 0.1
+    orcs.render();
+    }
+    // setInterval(function(){
+    //     let newEnemies = [];
+    //     orcs = new Enemies(50, 50, "red", 15, 25)
+    //     newEnemies.push(orcs)
+    //     console.log(newEnemies);
+    // }, 1000)
+// }
+
 renderTest();
-castle.render();
-orcs.render();
+// This is the main game loop that will run once start is clicked.
+function gameLoop() {
+    ctx.clearRect(0, 0, game.width, game.height)
+    castle.render();
+    enemyMovement();
+    console.log(orcs)
+}
+
+
+setInterval(gameLoop, 1000);
+
+
+
+
 
 // (function (){
 //     castle = new Capital(100, 100, "grey", 100, 20)
