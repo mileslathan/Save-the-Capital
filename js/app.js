@@ -57,13 +57,12 @@ function enemyMovement() {
     orcs.y += (castle.y - orcs.y) * 0.1
     orcs.render();
     }
-    // setInterval(function(){
-    //     let newEnemies = [];
-    //     orcs = new Enemies(50, 50, "red", 15, 25)
-    //     newEnemies.push(orcs)
-    //     console.log(newEnemies);
-    // }, 1000)
-// }
+
+        let newEnemies = [];
+        let newOrcs = new Enemies(50, 50, "red", 15, 25);
+        newEnemies.push(newOrcs);
+        // console.log(newEnemies);
+
 
 renderTest();
 // This is the main game loop that will run once start is clicked.
@@ -72,6 +71,7 @@ function gameLoop() {
     castle.render();
     enemyMovement();
     console.log(orcs)
+    // console.log(newEnemies);
 }
 
 
