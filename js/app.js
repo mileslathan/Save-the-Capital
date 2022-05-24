@@ -57,10 +57,11 @@ let castle = new Capital(350, 370, "white", 100, 30)
 //    newEnemies.push(newOrcs)
 //    console.log(newEnemies);
 const orcs = [];
-
+let v = 0;
 // Enemies will appear randomly on the canvas selected area. Will then proceed to move towards Capital.
 function newEnemy() {
-    if (orcs.length < 10){
+    if (v < 1){
+        v++
         let j = 0 
         for( i = 0; i < 10; i++) {
             setTimeout(() => {  
@@ -68,7 +69,8 @@ function newEnemy() {
         let yRandom = Math.floor(Math.random() * game.height);
         let orc = new Enemies(xRandom, yRandom, "red", 15, 25)
         orcs.push(orc);
-            console.log(orcs[j].render());
+        orcs[j].render();
+        console.log(orcs)
         j++
         }, i * 5000);
      }
@@ -94,7 +96,7 @@ function gameLoop() {
     newEnemy();
     enemyMovement();
     castle.render();
-    console.dir(orcs)
+
 }
 
 
