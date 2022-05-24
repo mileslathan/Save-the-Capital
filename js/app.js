@@ -45,40 +45,56 @@ class Enemies {
 }
 
 let castle = new Capital(350, 370, "white", 100, 30)
-let xRandom = Math.floor(Math.random * 800);
-let yRandom = Math.floor(Math.random * 400);
 
 
 
-let orc1 = new Enemies(xRandom, yRandom, "red", 15, 25)
-let orc2 = new Enemies(xRandom, yRandom, "red", 15, 25)
+
+
 
 
 // const newEnemies = [];
 // const newOrcs = new Enemies(50, 50, "red", 15, 25)
 //    newEnemies.push(newOrcs)
 //    console.log(newEnemies);
+const orcs = [];
 
 // Enemies will appear randomly on the canvas selected area. Will then proceed to move towards Capital.
+function newEnemy() {
+    if (orcs.length < 10){
+        let j = 0 
+        for( i = 0; i < 10; i++) {
+            setTimeout(() => {  
+        let xRandom = Math.floor(Math.random() * game.width);
+        let yRandom = Math.floor(Math.random() * game.height);
+        let orc = new Enemies(xRandom, yRandom, "red", 15, 25)
+        orcs.push(orc);
+            console.log(orcs[j].render());
+        j++
+        }, i * 5000);
+     }
+     setTimeout(() => {
+         j = 0
+     }, 10 * 5000);
+    }
+}
+
 function enemyMovement() {
-    let orcs = [];
-    orcs.push(orc1);
-    orcs.push(orc2);
-    console.log(orcs);
-orcs.forEach((orc) => { 
-    // orc.x += (castle.x - orc.x) * 0.1
-    // orc.y += (castle.y - orc.y) * 0.1
-    orc.render();
-})
-};
+    orcs[0].x += (castle.x - orcs[0].x) * .1;
+    console.log()
+    orcs[0].y += (castle.y - orcs[0].y) * 0.1;
+
+}
+    // orc.render();
+
 
 // renderTest();
 // This is the main game loop that will run once start is clicked.
 function gameLoop() {
-    ctx.clearRect(0, 0, game.width, game.height)
-    castle.render();
+    //ctx.clearRect(0, 0, game.width, game.height)
+    newEnemy();
     enemyMovement();
-    console.log(orcs)
+    castle.render();
+    console.dir(orcs)
 }
 
 
