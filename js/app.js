@@ -89,9 +89,13 @@ const bombs = [];
 function generateBomb() {
 // We want to make it so that every 8 seconds, a new bomb is added to the bombs array.
 setInterval(() => {
-    
-}, 8000);
+    if (bombs.length < 13) {
+    let bomb = new Weapons(400, 200, "grey", 15, 15)
+    bombs.push(bomb);
+    } return;
+}, 7000);
 }
+generateBomb();
 
 
 
@@ -148,6 +152,7 @@ orcs.forEach((orc) => {
     orc.x < castle.x + castle.width &&
     orc.y + orc.height > castle.y &&
     orc.y < castle.y + castle.height) {       
+        
         capitalHP = capitalHP - 10;
         let newCapitalHealth = capitalHP;
         capitalHealth.textContent = `Capital Health: ${newCapitalHealth}`;
@@ -167,13 +172,13 @@ function gameLoop() {
     updateTimeLeft();
     hitDetection();
     enemyMovement();
-
+    console.log(bombs);
     castle.render();
 
 }
 
 
-setInterval(gameLoop, 1000);
+setInterval(gameLoop, 700);
 
 
 
