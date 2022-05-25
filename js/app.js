@@ -85,6 +85,9 @@ let castle = new Capital(350, 370, "white", 100, 30)
 let bomb = new Weapons(400, 200, "grey", 15, 15)
 let orc;
 
+let onClickX = 0;
+let onClickY = 0;
+
 const bombs = [];
 const fieldBombs = [];
 function generateBomb() {
@@ -100,11 +103,19 @@ generateBomb();
 
 function bombPlacement() {
     bombs[0].render();
+    bombs[0].x = onClickX;
+    bombs[0].y = onClickY;
     fieldBombs.push(bombs[0]);
     bombs.shift();
 }
+
+
 // Adding an event listner that listens for a mouse click on the canvas to initate a bomb added on canvas.
-game.addEventListener("click", bombPlacement)
+game.addEventListener("click", bombPlacement);
+game.addEventListener("click", function(event) {
+    onClickX = event.offsetX;
+    onClickY = event.offsetY;
+})
 
 
 
@@ -181,7 +192,8 @@ function gameLoop() {
     updateTimeLeft();
     hitDetection();
     enemyMovement();
-    console.log(bombs);
+    // console.log(bombs);
+    console.log(fieldBombs);
     castle.render();
 
 }
