@@ -43,9 +43,24 @@ class Enemies {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
+class Weapons {
+    constructor(x, y, color, width, height) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.width = width;
+        this.height = height;
+        this.alive = true;
+    }
 
+    render() {
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.x, this.y, this.width, this.height)
+    }
+}
 let castle = new Capital(350, 370, "white", 100, 30)
 let orc;
+let bomb;
 
 
 
@@ -84,9 +99,13 @@ newEnemy();
 
 function enemyMovement() {
     orcs.forEach((orc) =>{
-    if (orc.x < 400) {
-    orc.x += (castle.x - orc.x) * 0.1;
-     } else { (orc.x += 380 - orc.x) * 0.1 }  
+    if (orc.x > 350 && orc.x < 450) {
+        orc.x += (395 - orc.x) * 0.1
+    } else if (orc.x < 350) {
+        orc.x += (castle.x - orc.x) * 0.1;
+    } else if (orc.x > 450) {
+        orc.x += (430 - orc.x) * 0.1;
+     }
     orc.y += (castle.y - orc.y) * 0.1;
         orc.render();
 })
