@@ -82,9 +82,16 @@ class Weapons {
     }
 }
 let castle = new Capital(350, 370, "white", 100, 30)
+let bomb = new Weapons(400, 200, "grey", 15, 15)
 let orc;
-let bomb;
 
+const bombs = [];
+function generateBomb() {
+// We want to make it so that every 8 seconds, a new bomb is added to the bombs array.
+setInterval(() => {
+    
+}, 8000);
+}
 
 
 
