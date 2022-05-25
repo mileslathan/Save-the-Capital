@@ -114,7 +114,7 @@ function enemyMovement() {
 })
 }
 
-function hitDetection(orc, castle, bomb) {
+function hitDetection() {
     // Creating hit detection for orcs touching the capital.
 orcs.forEach((orc) => {
     if (orc.x + orc.width > castle.x &&
