@@ -94,7 +94,7 @@ function generateBomb() {
 // We want to make it so that every 8 seconds, a new bomb is added to the bombs array.
 setInterval(() => {
     if (bombs.length < 13) {
-    let bomb = new Weapons(400, 200, "grey", 15, 15)
+    let bomb = new Weapons(1500, 700, "grey", 15, 15)
     bombs.push(bomb);
     } return;
 }, 8000);
@@ -103,8 +103,6 @@ generateBomb();
 
 function bombPlacement() {
     bombs[0].render();
-    bombs[0].x = onClickX;
-    bombs[0].y = onClickY;
     fieldBombs.push(bombs[0]);
     bombs.shift();
 }
@@ -115,9 +113,15 @@ game.addEventListener("click", bombPlacement);
 game.addEventListener("click", function(event) {
     onClickX = event.offsetX;
     onClickY = event.offsetY;
+    fieldBombs[0].x = onClickX;
+    fieldBombs[0].y = onClickY;
 })
 
-
+function bombBoard() {
+    fieldBombs.forEach((bomb) => {
+        bomb.render();
+    })
+}
 
 
 
@@ -192,7 +196,8 @@ function gameLoop() {
     updateTimeLeft();
     hitDetection();
     enemyMovement();
-    // console.log(bombs);
+    bombBoard();
+    console.log(bombs);
     console.log(fieldBombs);
     castle.render();
 
