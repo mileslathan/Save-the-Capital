@@ -192,7 +192,7 @@ orcs.forEach((orc) => {
     orc.x < castle.x + castle.width &&
     orc.y + orc.height > castle.y &&
     orc.y < castle.y + castle.height) {       
-        
+        orcs.splice(orc, 1);
         capitalHP = capitalHP - 10;
         let newCapitalHealth = capitalHP;
         capitalHealth.textContent = `Capital Health: ${newCapitalHealth}`;
