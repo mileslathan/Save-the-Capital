@@ -1,8 +1,8 @@
 // Assigns variable to grab the game element of canvas.
 let game = document.querySelector("#game");
-let timeClock = document.querySelector("#time-left")
-let capitalHealth = document.querySelector("#capital-hp")
-console.log(game);
+let timeClock = document.querySelector("#time-left");
+let capitalHealth = document.querySelector("#capital-hp");
+let availBomb = document.querySelector("#bombs");
 
 
 // this creates a 2 dimensional canvas.
@@ -131,6 +131,13 @@ function bombBoard() {
     })
 }
 
+function bombDisplay() {
+    let bombCounter = 0;
+    for (let i = 0; i < bombs.length; i++) {
+        bombCounter += 1;
+    }
+    availBomb.textContent = `Avail. Bombs: ${bombCounter}`
+}
 
 
 // const newEnemies = [];
@@ -205,6 +212,7 @@ function gameLoop() {
     hitDetection();
     enemyMovement();
     bombBoard();
+    bombDisplay();
     // console.log(bombs);
     // console.log(fieldBombs);
     castle.render();
