@@ -86,6 +86,7 @@ let bomb = new Weapons(400, 200, "grey", 15, 15)
 let orc;
 
 const bombs = [];
+const fieldBombs = [];
 function generateBomb() {
 // We want to make it so that every 8 seconds, a new bomb is added to the bombs array.
 setInterval(() => {
@@ -93,9 +94,17 @@ setInterval(() => {
     let bomb = new Weapons(400, 200, "grey", 15, 15)
     bombs.push(bomb);
     } return;
-}, 7000);
+}, 8000);
 }
 generateBomb();
+
+function bombPlacement() {
+    bombs[0].render();
+    fieldBombs.push(bombs[0]);
+    bombs.shift();
+}
+// Adding an event listner that listens for a mouse click on the canvas to initate a bomb added on canvas.
+game.addEventListener("click", bombPlacement)
 
 
 
