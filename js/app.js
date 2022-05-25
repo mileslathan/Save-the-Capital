@@ -1,10 +1,13 @@
 // Assigns variable to grab the game element of canvas.
 let game = document.querySelector("#game");
+let timeLeft = document.querySelector("#time-left")
 console.log(game);
 
 
 // this creates a 2 dimensional canvas.
 let ctx = game.getContext("2d");
+
+let capitalHealth = 100;
 
 // Not sure what this does but was used in our Canvas Crawler.
 game.setAttribute("height", getComputedStyle(game)["height"]);
@@ -111,10 +114,19 @@ function enemyMovement() {
 })
 }
 
-function hitDetection() {
+function hitDetection(orc, castle, bomb) {
     // Creating hit detection for orcs touching the capital.
-
+orcs.forEach((orc) => {
+    if (orc.x + orc.width > castle.x &&
+    orc.x < castle.x + castle.width &&
+    orc.y + orc.height > castle.y &&
+    orc.y < castle.y + castle.height) {       
+        let newCapitalHealth = capitalHealth - 10;
+        timeLeft.textContent = newCapitalHealth;
+    };
+})
 }
+
 
 
 // renderTest();
@@ -124,8 +136,9 @@ function gameLoop() {
     // orcs.forEach((orc) => {
     //     orc.render();
     // })
-    // newEnemy();
+    hitDetection();
     enemyMovement();
+
     castle.render();
 
 }
