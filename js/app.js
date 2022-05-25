@@ -1,13 +1,14 @@
 // Assigns variable to grab the game element of canvas.
 let game = document.querySelector("#game");
 let timeLeft = document.querySelector("#time-left")
+let capitalHealth = document.querySelector("#capital-hp")
 console.log(game);
 
 
 // this creates a 2 dimensional canvas.
 let ctx = game.getContext("2d");
 
-let capitalHealth = 100;
+let capitalHP = 100;
 
 // Not sure what this does but was used in our Canvas Crawler.
 game.setAttribute("height", getComputedStyle(game)["height"]);
@@ -121,8 +122,9 @@ orcs.forEach((orc) => {
     orc.x < castle.x + castle.width &&
     orc.y + orc.height > castle.y &&
     orc.y < castle.y + castle.height) {       
-        let newCapitalHealth = capitalHealth - 10;
-        timeLeft.textContent = newCapitalHealth;
+        capitalHP = capitalHP - 10;
+        let newCapitalHealth = capitalHP;
+        capitalHealth.textContent = `Capital Health: ${newCapitalHealth}`;
     };
 })
 }
