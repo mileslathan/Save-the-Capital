@@ -90,31 +90,39 @@ let onClickY = 0;
 
 const bombs = [];
 const fieldBombs = [];
+
+
 function generateBomb() {
 // We want to make it so that every 8 seconds, a new bomb is added to the bombs array.
 setInterval(() => {
     if (bombs.length < 13) {
-    let bomb = new Weapons(1500, 700, "grey", 15, 15)
+    let bomb = new Weapons(-100, 700, "grey", 15, 15)
     bombs.push(bomb);
-    } return;
-}, 8000);
 }
+console.log(bombs);
+}, 2000);
+} 
 generateBomb();
-
 function bombPlacement() {
-    bombs[0].render();
-    fieldBombs.push(bombs[0]);
+    // bombs[0].render();
+    if (bombs.length > 0) {
+    fieldBombs.unshift(bombs[0]);
+    fieldBombs[0].x = onClickX;
+    fieldBombs[0].y = onClickY;
     bombs.shift();
+}
+    console.log(bombs)
+    // debugger;
 }
 
 
 // Adding an event listner that listens for a mouse click on the canvas to initate a bomb added on canvas.
-game.addEventListener("click", bombPlacement);
+// game.addEventListener("click", bombPlacement);
 game.addEventListener("click", function(event) {
     onClickX = event.offsetX;
     onClickY = event.offsetY;
-    fieldBombs[0].x = onClickX;
-    fieldBombs[0].y = onClickY;
+    bombPlacement();
+    console.log(onClickX);
 })
 
 function bombBoard() {
@@ -144,7 +152,7 @@ function newEnemy() {
                 orc = new Enemies(xRandom, yRandom, "red", 10, 25)
                 orcs.push(orc);
                 // orcs[i].render();
-        console.log(orcs)
+        // console.log(orcs)
         // j++
         }, i * 5000);
      }
@@ -197,8 +205,8 @@ function gameLoop() {
     hitDetection();
     enemyMovement();
     bombBoard();
-    console.log(bombs);
-    console.log(fieldBombs);
+    // console.log(bombs);
+    // console.log(fieldBombs);
     castle.render();
 
 }
