@@ -1,16 +1,17 @@
+
 // Assigns variable to grab the game element of canvas.
 let game = document.querySelector("#game");
 let timeClock = document.querySelector("#time-left");
 let capitalHealth = document.querySelector("#capital-hp");
 let availBomb = document.querySelector("#bombs");
-
-
 // this creates a 2 dimensional canvas.
 let ctx = game.getContext("2d");
 
+// Assigns timer variables for the Capital HP and the Time Left Timer. Default set to 100.
 let capitalHP = 100;
 let timeLeft  = 100;
 
+// This fuction updates the timer on the UI and in game to reflect the amount of time left.
 function updateTimeLeft() {
     if (timeLeft > 0) {
     timeLeft--;
@@ -19,7 +20,7 @@ function updateTimeLeft() {
         return timeLeft;
     }
 }
-
+// *************** TEST CODE *******************
 // newTimeLeft = timeLeft - 1;
 // if (newTimeLeft >= 0) {
 //     timeClock.textContent = `Time Left: ${newTimeLeft}`
@@ -139,7 +140,7 @@ function bombDisplay() {
     availBomb.textContent = `Avail. Bombs: ${bombCounter}`
 }
 
-
+// *************** TEST CODE *******************
 // const newEnemies = [];
 // const newOrcs = new Enemies(50, 50, "red", 15, 25)
 //    newEnemies.push(newOrcs)
@@ -201,13 +202,10 @@ orcs.forEach((orc) => {
 
 
 
-// renderTest();
+
 // This is the main game loop that will run once start is clicked.
 function gameLoop() {
     ctx.clearRect(0, 0, game.width, game.height)
-    // orcs.forEach((orc) => {
-    //     orc.render();
-    // })
     updateTimeLeft();
     hitDetection();
     enemyMovement();
@@ -220,33 +218,7 @@ function gameLoop() {
 }
 
 
-setInterval(gameLoop, 700);
-
-
-
-
-
-// (function (){
-//     castle = new Capital(100, 100, "grey", 100, 20)
-//     enemy = new Enemies(200, 100, "red", 10, 10)
-//     const runGame = setInterval(gameLoop, 120)
-// })
-
-// function gameLoop(){
-//     // ctx.clearRect(0, 0, game.width, game.height);
-
-//     // movement.textContent = `X:${donkey.x}\n Y:${donkey.y}`
-
-//     if (castle.alive){
-//         castle.render();
-//         // let hit = detectHit(donkey, shrek)
-//     }
-
-//     enemy.render();
-// }
-
-
-
+setInterval(gameLoop, 1000);
 
 
 
