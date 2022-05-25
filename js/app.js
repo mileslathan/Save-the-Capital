@@ -110,7 +110,11 @@ function enemyMovement() {
         orc.render();
 })
 }
-    // orc.render();
+
+function hitDetection() {
+    // Creating hit detection for orcs touching the capital.
+
+}
 
 
 // renderTest();
