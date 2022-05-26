@@ -101,7 +101,7 @@ setInterval(() => {
     bombs.push(bomb);
 }
 console.log(bombs);
-}, 2000);
+}, 8000);
 } 
 generateBomb();
 function bombPlacement() {
@@ -196,10 +196,18 @@ orcs.forEach((orc) => {
         capitalHP = capitalHP - 10;
         let newCapitalHealth = capitalHP;
         capitalHealth.textContent = `Capital Health: ${newCapitalHealth}`;
+    }
+    fieldBombs.forEach((fbomb) =>{
+        if (orc.x + orc.width > fbomb.x &&
+        orc.x < fbomb.x + fbomb.width &&
+        orc.y + orc.height > fbomb.y &&
+        orc.y < fbomb.y + fbomb.height) {
+            orcs.splice(orc, 1);
+            fieldBombs.splice(fbomb, 1);
     };
 })
+})
 }
-
 
 
 
