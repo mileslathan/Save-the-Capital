@@ -187,28 +187,33 @@ function enemyMovement() {
 
 function hitDetection() {
     // Creating hit detection for orcs touching the capital.
-orcs.forEach((orc) => {
+orcs.forEach((orc, indexO) => {
     if (orc.x + orc.width > castle.x &&
     orc.x < castle.x + castle.width &&
     orc.y + orc.height > castle.y &&
     orc.y < castle.y + castle.height) {       
-        orcs.splice(orc, 1);
+        orcs.splice(indexO, 1);
+        console.log(orcs)
         capitalHP = capitalHP - 10;
         let newCapitalHealth = capitalHP;
         capitalHealth.textContent = `Capital Health: ${newCapitalHealth}`;
     }
-    fieldBombs.forEach((fbomb) =>{
+    fieldBombs.forEach((fbomb, indexF) =>{
         if (orc.x + orc.width > fbomb.x &&
         orc.x < fbomb.x + fbomb.width &&
         orc.y + orc.height > fbomb.y &&
         orc.y < fbomb.y + fbomb.height) {
-            orcs.splice(orc, 1);
-            fieldBombs.splice(fbomb, 1);
+            orcs.splice(indexO, 1);
+            fieldBombs.splice(indexF, 1);
     };
 })
 })
 }
 
+function winCondition() {
+// Checking if either conditions are met for the win.
+
+}
 
 
 // This is the main game loop that will run once start is clicked.
