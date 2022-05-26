@@ -103,7 +103,8 @@ setInterval(() => {
 console.log(bombs);
 }, 8000);
 } 
-generateBomb();
+
+
 function bombPlacement() {
     // bombs[0].render();
     if (bombs.length > 0) {
@@ -169,7 +170,6 @@ function newEnemy() {
     //  }, 10 * 5000);
     }
 // }
-newEnemy();
 
 function enemyMovement() {
     orcs.forEach((orc) =>{
@@ -225,9 +225,11 @@ function gameLoop() {
 
 }
 
-
+document.querySelector("#start-game").addEventListener("click", function() {
 setInterval(gameLoop, 1000);
-
+generateBomb();
+newEnemy();
+});
 
 
 window.addEventListener("DOMContentLoaded", function(e){
