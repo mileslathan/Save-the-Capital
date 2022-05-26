@@ -212,12 +212,30 @@ orcs.forEach((orc, indexO) => {
 
 function winCondition() {
 // Checking if either conditions are met for the win.
- if ((timeLeft > 0) && (capitalHP = 0)) {
+ if (timeLeft > 0 && capitalHP === 0) {
     // logic to check for if the player has died before the time expires which executes the losing condition.
-
-} if (timeLeft = 0 && capitalHP > 0) {
+    playerWon();
+} else if (timeLeft === 0 && capitalHP > 0) {
     // the logic to stop the functions and return a screen that indicates the player has won!
+    playerLose();
 }
+
+}
+
+function playerWon() {
+    location.reload();
+    ctx.font = "30px Comic Sans MS";
+    ctx.fillStyle = "white"
+    ctx.textAlign = "center";
+    ctx.fillText("You have defeated the orcs this time! Press Restart to play again.", game.width/2, game.height/2);
+}
+
+function playerLose() {
+    location.reload()
+    ctx.font = "30px Comic Sans MS";
+    ctx.fillStyle = "white"
+    ctx.textAlign = "center";
+    ctx.fillText("The orcs have taken over the Capital! It's all over... Press Restart to play again.", game.width/2, game.height/2);
 }
 
 
@@ -229,6 +247,7 @@ function gameLoop() {
     enemyMovement();
     bombBoard();
     bombDisplay();
+    winCondition();
     // console.log(bombs);
     // console.log(fieldBombs);
     castle.render();
