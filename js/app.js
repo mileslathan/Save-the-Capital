@@ -212,7 +212,12 @@ orcs.forEach((orc, indexO) => {
 
 function winCondition() {
 // Checking if either conditions are met for the win.
+ if ((timeLeft > 0) && (capitalHP = 0)) {
+    // logic to check for if the player has died before the time expires which executes the losing condition.
 
+} if (timeLeft = 0 && capitalHP > 0) {
+    // the logic to stop the functions and return a screen that indicates the player has won!
+}
 }
 
 
