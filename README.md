@@ -83,4 +83,126 @@ class Enemies {
 }
 ```
 
-`newEnemy`
+`newEnemy();` creates new enemies at random locatons
+
+```javascript
+let orcs = [];
+let v = 0;
+newEnemy() {
+    if (castle.alive === false || plyrWon === false){
+        return;
+    } else {
+    // if (v < 1){
+    //     v++
+        let i = 0 
+        for(i; i < 20; i++) {
+            setTimeout(() => {  
+                let xRandom = Math.floor(Math.random() * game.width);
+                let yRandom = Math.floor(Math.random() * 200);
+                orc = new Enemies(xRandom, yRandom, "red", 10, 25)
+                orcs.push(orc);
+                // orcs[i].render();
+        // console.log(orcs)
+        // j++
+        }, i * 5000);
+     }
+```
+`generateBombs();` `bombPlacement();` `bombBoard();` and `bombDisplay()`
+
+```javascript
+function generateBomb() {
+    if (castle.alive === false || plyrWon === false){
+        return;
+    } else {
+
+setInterval(() => {
+    if (bombs.length < 13) {
+    let bomb = new Weapons(-100, 700, "grey", 15, 15)
+    bombs.push(bomb);
+}
+// console.log(bombs);
+}, 8000);
+} 
+}
+
+function bombPlacement() {
+    // bombs[0].render();
+    if (bombs.length > 0) {
+    fieldBombs.unshift(bombs[0]);
+    fieldBombs[0].x = onClickX;
+    fieldBombs[0].y = onClickY;
+    bombs.shift();
+}
+    // console.log(bombs)
+    // debugger;
+}
+
+game.addEventListener("click", function(event) {
+    onClickX = event.offsetX;
+    onClickY = event.offsetY;
+    bombPlacement();
+})
+
+function bombBoard() {
+    fieldBombs.forEach((bomb) => {
+        bomb.render();
+    })
+}
+
+function bombDisplay() {
+    let bombCounter = 0;
+    for (let i = 0; i < bombs.length; i++) {
+        bombCounter += 1;
+    }
+    availBomb.textContent = `Avail. Bombs: ${bombCounter}`
+}
+```
+`enemyMovement();` `hitDetection();` and `winCondition();`
+
+```javascript
+
+function enemyMovement() {
+    orcs.forEach((orc) =>{
+    if (orc.x > 350 && orc.x < 450) {
+        orc.x += (395 - orc.x) * 0.1
+    } else if (orc.x < 350) {
+        orc.x += (castle.x - orc.x) * 0.1;
+    } else if (orc.x > 450) {
+        orc.x += (430 - orc.x) * 0.1;
+     }
+    orc.y += (castle.y - orc.y) * 0.1;
+        orc.render();
+})
+}
+
+function hitDetection() {
+orcs.forEach((orc, indexO) => {
+    if (orc.x + orc.width > castle.x &&
+    orc.x < castle.x + castle.width &&
+    orc.y + orc.height > castle.y &&
+    orc.y < castle.y + castle.height) {       
+        orcs.splice(indexO, 1);
+        console.log(orcs)
+        capitalHP = capitalHP - 10;
+        let newCapitalHealth = capitalHP;
+        capitalHealth.textContent = `Capital Health: ${newCapitalHealth}`;
+    }
+    fieldBombs.forEach((fbomb, indexF) =>{
+        if (orc.x + orc.width > fbomb.x &&
+        orc.x < fbomb.x + fbomb.width &&
+        orc.y + orc.height > fbomb.y &&
+        orc.y < fbomb.y + fbomb.height) {
+            orcs.splice(indexO, 1);
+            fieldBombs.splice(indexF, 1);
+    };
+})
+})
+}
+
+function winCondition() {
+ if (timeLeft > 0 && capitalHP === 0) {
+    castle.alive = false;
+    // playerWon();
+} else if (timeLeft === 0 && capitalHP > 0) {
+    plyrWon = false;
+ }
