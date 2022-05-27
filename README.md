@@ -38,3 +38,19 @@ This project uses HTML5 and CSS along with Canvas technologies for the UI, outpu
 It also uses DOM and Javascript for the logic of the game.
 
 ## Approach
+
+The approach I used for this project I broke into three parts in order:
+
+1. Front-End User Experience
+  - Construct the basic template in HTML I will use as the main content container within the body of the HTML.
+  - Use CSS for essential styling of the contents.
+  - Ensure html elements were properly organized and tagged with their own unique id's.
+
+2. Basic gameplay functionality (I like to call primary functionality)
+  - These primaries were: 
+        - The randomly generated enemies 
+        - Their attack movement
+        - Bomb/death interactions 
+        - And finally record keeping
+
+3. 
