@@ -1,7 +1,9 @@
 # Save-the-Capital!
-Tower defense game to protect the capital from the orcs!
+A Tower defense game with the goal of protecting the Capital from the oncoming enemies!
 
 SEI -5/9- ** Project One **
+
+Miles Lathan
 
 ## INSTALLATION
 1. Go to [This Repo](https://github.com/mileslathan/Save-the-Capital)
@@ -15,7 +17,7 @@ git clone https://github.com/mileslathan/Save-the-Capital.git
 
 ## WHAT IS IT?
 
-Save the Capital! Is a rudementary tower defense game with the main purpose of defending your base against hordes of enemies that want to attack and destroy the player's base.
+Save the Capital! Is a rudementary tower defense game based on the tower defense genre that has become extremely popular in recent years. The main premise of these games, is to defend your base or castle against hordes of randomly generate enemies, and survive. Over time, you will get units that become available at your disposal to be used to kill hordes of enemies with.
 
 Popular examples include:
 
@@ -27,9 +29,15 @@ Popular examples include:
 
 Objective of the game is to prevent the capital from being destroyed by killing the orcs in time!
 
-Players will randomly be given bombs to place on the field to prevent the orcs from taking the capital.
+The Capital is represented here as a white static box at the bottom of your screen. (This is your base)
+
+Your Capital has 100 HP and as enemies (represented in red rectangles), manage to touch it, your capital takes damage.
+
+In order to prevent that, players will randomly be given bombs (indicated on the bottom left) to place on the field to prevent the orcs from taking the capital.
 
 If the capital does not fall within the allotted time, player wins!
+
+However if the Capital goes to 0 HP, you lose.
 
 ## Technologies Used
 
@@ -60,7 +68,7 @@ The approach I used for this project I broke into three parts in order:
 
 ## Unsolved Problems
 
-Only remaining issues are bugs, QoL changes and slight functionality improvements. Ex: Start and Stop buttons clearing previous functions to allow interval to run at expected speed.
+Only remaining issues are bugs, QoL changes and slight functionality improvements. Ex: Start and Stop buttons clearing previous functions to allowing proper setIntervals to run at expected speed.
 
 ##Code Review
 
