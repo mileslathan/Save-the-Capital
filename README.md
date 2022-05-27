@@ -53,4 +53,7 @@ The approach I used for this project I broke into three parts in order:
         - Bomb/death interactions 
         - And finally record keeping
 
-3. 
+3. Checks and others (Secondary functionality)
+  - Making sure the start, restart and Instruction buttons work
+  - Adding win condition logic with user feedback
+  - Debugging (as best as I could...)
