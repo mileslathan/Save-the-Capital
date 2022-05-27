@@ -30,3 +30,11 @@ Objective of the game is to prevent the capital from being destroyed by killing 
 Players will randomly be given bombs to place on the field to prevent the orcs from taking the capital.
 
 If the capital does not fall within the allotted time, player wins!
+
+## Technologies Used
+
+This project uses HTML5 and CSS along with Canvas technologies for the UI, output and interactions. 
+
+It also uses DOM and Javascript for the logic of the game.
+
+## Approach
