@@ -4,6 +4,15 @@ let game = document.querySelector("#game");
 let timeClock = document.querySelector("#time-left");
 let capitalHealth = document.querySelector("#capital-hp");
 let availBomb = document.querySelector("#bombs");
+let instructions = document.querySelector("#instructions");
+let rulesDiv = document.querySelector("#rules")
+
+
+// Function that grabs the instructions div and inserts instructions after "instructions" button is pressed.
+document.querySelector("#instructions").addEventListener("click", () => {
+    rulesDiv.innerHTML = "Here are the rules: <p>1. On start, you will be given 100 seconds to survive the first wave of enemies.</p> <p>2. Every so often, you will be given bombs that you can place on the map and when an enemy walks into them... BAM!! they die.</p> 3. If you can survive the 100 seconds with the Capital HP above 1, you win!"
+})
+
 // this creates a 2 dimensional canvas.
 let ctx = game.getContext("2d");
 
@@ -88,8 +97,8 @@ let orc;
 let onClickX = 0;
 let onClickY = 0;
 
-const bombs = [];
-const fieldBombs = [];
+let bombs = [];
+let fieldBombs = [];
 
 
 let plyrWon = true;
@@ -150,7 +159,7 @@ function bombDisplay() {
 //    newEnemies.push(newOrcs)
 //    console.log(newEnemies);
 
-const orcs = [];
+let orcs = [];
 let v = 0;
 // Enemies will appear randomly on the canvas selected area. Will then proceed to move towards Capital.
 function newEnemy() {
@@ -278,9 +287,27 @@ setInterval(() => {
  if (castle.alive === false) {
      playerLose();
  } else if (plyrWon === false) {
-     playerWon();}
- }, 2000);
+     playerWon();
+    };
+ } , 2000);
 
+ document.querySelector("#reset-game").addEventListener("click", function() {
+    ctx.clearRect(0, 0, game.width, game.height)
+    capitalHP = 100;
+    capitalHealth.textContent = `Capital Health: ${capitalHP}`;
+    timeLeft = 100;
+    castle.alive = true;
+    plyrWon = true;
+    orcs = [];
+    fieldBombs = [];
+    bombs = [];
+    console.log(plyrWon);
+    setTimeout(() => {
+     gameLoop();
+     generateBomb();
+     newEnemy();
+     }, 2000);
+    });
 
 window.addEventListener("DOMContentLoaded", function(e){
 

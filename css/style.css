@@ -21,6 +21,10 @@
                       "btm-left btm-center btm-right";
 }
 
+#rules {
+  text-align: center;
+}
+
 #top-left, #top-center, #top-right, #btm-left, #btm-center, #btm-right {
     display: flex;
     justify-content: center;
