@@ -206,3 +206,4 @@ function winCondition() {
 } else if (timeLeft === 0 && capitalHP > 0) {
     plyrWon = false;
  }
+```
