@@ -1,7 +1,27 @@
 # Save-the-Capital!
 Tower defense game to protect the capital from the orcs!
 
-SEI-59-
+SEI -5/9- ** Project One **
+
+## INSTALLATION
+1. Go to [This Repo](https://github.com/mileslathan/Save-the-Capital)
+2. Fork and clone the repo
+```text
+git clone https://github.com/mileslathan/Save-the-Capital.git
+```
+4. Go to the Save-the-Capital directory
+5. and lastly open index.html in browser
+
+
+## WHAT IS IT?
+
+Save the Capital! Is a rudementary tower defense game with the main purpose of defending your base against hordes of enemies that want to attack and destroy the player's base.
+
+Popular examples include:
+
+![Clash Royale IMG](/img/clash.png)   ![Plants vs Zombies IMG](/img/pvz.jpg)
+
+
 
 ## HOW TO PLAY
 
