@@ -70,7 +70,7 @@ The approach I used for this project I broke into three parts in order:
 
 Only remaining issues are bugs, QoL changes and slight functionality improvements. Ex: Start and Stop buttons clearing previous functions to allowing proper setIntervals to run at expected speed.
 
-##Code Review
+## Code Review
 
 Classes:
 ```javascript
