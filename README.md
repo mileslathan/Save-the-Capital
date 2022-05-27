@@ -57,3 +57,30 @@ The approach I used for this project I broke into three parts in order:
   - Making sure the start, restart and Instruction buttons work
   - Adding win condition logic with user feedback
   - Debugging (as best as I could...)
+
+## Unsolved Problems
+
+Only remaining issues are bugs, QoL changes and slight functionality improvements. Ex: Start and Stop buttons clearing previous functions to allow interval to run at expected speed.
+
+##Code Review
+
+Classes:
+```javascript
+class Enemies {
+    constructor(x, y, color, width, height) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.width = width;
+        this.height = height;
+        this.alive = true;
+    }
+
+    render() {
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.x, this.y, this.width, this.height)
+    }
+}
+```
+
+`newEnemy`
